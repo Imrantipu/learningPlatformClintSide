@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 const HomeLeftSideCard = ({ news }) => {
   const { _id, title, details, image_url } = news;
   return (
-    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
       <svg
-        class="w-10 h-10 mb-2 text-gray-500 dark:text-gray-400"
+        className="w-10 h-10 mb-2 text-gray-500 dark:text-gray-400"
         aria-hidden="true"
         fill="currentColor"
         viewBox="0 0 20 20"
@@ -20,14 +20,14 @@ const HomeLeftSideCard = ({ news }) => {
         ></path>
         <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"></path>
       </svg>
-        <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+        <h5 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
         {title}
         </h5>
         <Card  className="h-64" imgSrc={image_url}>
 
         </Card>
       
-      <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">
+      <p className="mb-3 font-normal text-gray-500 dark:text-gray-400">
       {details.length > 110 ? (
               <>
                 {details.slice(0, 110) + "..."}{" "}

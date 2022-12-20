@@ -27,8 +27,8 @@ const Header = () => {
     >
       Courses
     </Navbar.Link>
-    <Navbar.Link href="/navbars">
-      About
+    <Navbar.Link href="/questions">
+      FAQ
     </Navbar.Link>
     <Navbar.Link href="/navbars">
       Services
