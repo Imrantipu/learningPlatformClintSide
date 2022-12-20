@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const HomeRightSide = () => {
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        fetch(
+          "http://localhost:5000/news-categories"
+        )
+          .then((res) => res.json())
+          .then((data) => setCategories(data));
+      }, []);
     return (
         <div >
         <div className="card w-96 glass mx-auto">
-  {/* <figure><img src="https://placeimg.com/400/225/arch" alt="car!"/></figure> */}
   <div className="card-body">
-    <h2 className="card-title">Life hack</h2>
-    <p>How to park your car at your garage?</p>
+    <h2 className="card-title text-3xl text-bold"> Course Categories</h2>
+    <div >
+        {categories.map((category) => (
+          <p key={category.id}>
+            <Link
+              className="text-decoration-none"
+              to={`/category/${category.id}`}
+            >
+              {category.name}
+            </Link>
+          </p>
+        ))}
+      </div>
   </div>
 </div>
         </div>

@@ -22,10 +22,10 @@ const Header = () => {
   <Navbar.Toggle />
   <Navbar.Collapse>
     <Navbar.Link
-      href="/navbars"
+      href="/"
       active={true}
     >
-      Home
+      Courses
     </Navbar.Link>
     <Navbar.Link href="/navbars">
       About
