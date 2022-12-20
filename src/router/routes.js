@@ -4,6 +4,7 @@ import Home from './../components/Home';
 import SingleCourseDetail from "../components/SingleCourseDetail";
 import Category from "../components/Category";
 import Faq from "../components/Faq";
+import Blog from "../components/Blog";
 
 export const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
           {
             path: "/questions",
             element: <Faq></Faq>,
+          },
+          {
+            path: "/blog",
+            element: <Blog></Blog>,
           },
           
       ],

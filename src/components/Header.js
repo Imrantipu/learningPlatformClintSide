@@ -30,8 +30,8 @@ const Header = () => {
     <Navbar.Link href="/questions">
       FAQ
     </Navbar.Link>
-    <Navbar.Link href="/navbars">
-      Services
+    <Navbar.Link href="/blog">
+      Blog
     </Navbar.Link>
     <Navbar.Link href="/navbars">
       Pricing
