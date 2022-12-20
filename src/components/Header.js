@@ -33,11 +33,11 @@ const Header = () => {
     <Navbar.Link href="/blog">
       Blog
     </Navbar.Link>
-    <Navbar.Link href="/navbars">
-      Pricing
+    <Navbar.Link href="/login">
+      Login
     </Navbar.Link>
-    <Navbar.Link href="/navbars">
-      Contact
+    <Navbar.Link href="/register">
+      Register
     </Navbar.Link>
   </Navbar.Collapse>
 </Navbar>

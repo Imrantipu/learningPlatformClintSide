@@ -5,6 +5,8 @@ import SingleCourseDetail from "../components/SingleCourseDetail";
 import Category from "../components/Category";
 import Faq from "../components/Faq";
 import Blog from "../components/Blog";
+import Login from "../components/Login";
+import Register from "../components/Register";
 
 export const router = createBrowserRouter([
     {
@@ -46,6 +48,14 @@ export const router = createBrowserRouter([
           {
             path: "/blog",
             element: <Blog></Blog>,
+          },
+          {
+            path: "/login",
+            element: <Login></Login>,
+          },
+          {
+            path: "/register",
+            element: <Register></Register>,
           },
           
       ],
