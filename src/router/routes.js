@@ -7,6 +7,8 @@ import Faq from "../components/Faq";
 import Blog from "../components/Blog";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import PrivateRoute from "./PrivateRoute";
+import CheckOut from "../components/CheckOut";
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +40,18 @@ export const router = createBrowserRouter([
             loader: ({ params }) =>
               fetch(
                 `https://b610-lerning-platform-server-side-opuzayed.vercel.app/category/${params.id}`
+              ),
+          },
+          {
+            path: "/checkout/:id",
+            element: (
+              <PrivateRoute>
+                <CheckOut></CheckOut>
+              </PrivateRoute>
+            ),
+            loader: ({ params }) =>
+              fetch(
+                `https://b610-lerning-platform-server-side-opuzayed.vercel.app/news/${params.id}/`
               ),
           },
 

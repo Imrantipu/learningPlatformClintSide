@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Login = () => {
-  const { googleLogin,githubLogin,signIn} = useContext(AuthContext);
+  const { googleLogin,githubLogin,signIn , setLoading} = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
@@ -52,6 +52,9 @@ const Login = () => {
         console.error(error);
         setError(error.message);
       })
+      .finally(() => {
+        setLoading(false);
+      });
   };
   return (
     <div className="mt-2">

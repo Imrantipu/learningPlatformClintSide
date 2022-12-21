@@ -7,7 +7,7 @@ const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  const { createUser } = useContext(AuthContext);
+  const { createUser,updateUserProfile } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,12 +24,24 @@ const Register = () => {
         form.reset();
         setError("");
         navigate(from, { to: "/" }, { replace: true });
+        handleUpdateUserProfile(name, photoURL);
       
       })
       .catch((e) => {
         console.error(e);
         setError(e.message);
       });
+  };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
   };
     return (
         <div className="mt-2">
