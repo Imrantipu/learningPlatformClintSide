@@ -4,12 +4,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Login = () => {
+  const { googleLogin,githubLogin,signIn} = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const { googleLogin,githubLogin,signIn} = useContext(AuthContext);
+  
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
@@ -18,6 +19,7 @@ const Login = () => {
     .then((result) => {
       const user = result.user;
       console.log(user);
+      navigate(from, { to: "/" }, { replace: true });
     })
     .catch((error) => console.error(error));
   };
@@ -27,6 +29,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { to: "/" }, { replace: true });
       })
       .catch((error) => console.error(error));
   };
