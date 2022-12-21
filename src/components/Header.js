@@ -1,8 +1,16 @@
 import { Navbar } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from "../Assets/favicon.png";
+import { AuthContext } from '../contexts/AuthProvider';
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
+
     return (
         <div>
            <Navbar
@@ -33,12 +41,29 @@ const Header = () => {
     <Navbar.Link href="/blog">
       Blog
     </Navbar.Link>
-    <Navbar.Link href="/login">
+    <>
+      {user?.uid ? (
+        <>
+
+     <Navbar.Link href=""  onClick={handleLogOut}>
+      Log out
+    </Navbar.Link>
+         </>
+      ) : (
+        <>
+        <Navbar.Link href="/login">
       Login
     </Navbar.Link>
     <Navbar.Link href="/register">
       Register
     </Navbar.Link>
+        </>
+      )
+      
+      }
+    
+    </>
+    
   </Navbar.Collapse>
 </Navbar>
         </div>

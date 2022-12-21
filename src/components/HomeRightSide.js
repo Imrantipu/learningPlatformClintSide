@@ -21,7 +21,6 @@ const HomeRightSide = () => {
         {categories.map((category) => (
           <p key={category.id}>
             <Link
-              className="text-decoration-none"
               to={`/category/${category.id}`}
             >
               {category.name}
