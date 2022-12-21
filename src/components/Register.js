@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Register = () => {
-
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const { createUser } = useContext(AuthContext);
 
@@ -20,11 +20,13 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        setError("");
         navigate('/');
       
       })
       .catch((e) => {
         console.error(e);
+        setError(e.message);
       });
   };
     return (
@@ -104,6 +106,9 @@ const Register = () => {
           >
             Register
           </button>
+          <h5 className="  text-gray-900 dark:text-white ">
+             {error}
+          </h5>
           <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
           Already have an account?Please{" "}
             <Link to = "#" className="text-blue-700 hover:underline dark:text-blue-500">Login</Link>

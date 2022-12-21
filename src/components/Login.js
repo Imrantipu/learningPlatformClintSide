@@ -1,10 +1,10 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Login = () => {
-
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const { googleLogin,githubLogin,signIn} = useContext(AuthContext);
@@ -40,10 +40,12 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
+        setError("");
        navigate('/');
       })
       .catch((error) => {
         console.error(error);
+        setError(error.message);
       })
   };
   return (
@@ -91,6 +93,9 @@ const Login = () => {
           >
             Login to your account
           </button>
+          <h5 className="  text-gray-900 dark:text-white ">
+             {error}
+          </h5>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}
             <Link to = "#" className="text-blue-700 hover:underline dark:text-blue-500">Create account</Link>
