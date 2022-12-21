@@ -1,11 +1,13 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthProvider";
 
 const Login = () => {
 
-  const { googleLogin,githubLogin} = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const { googleLogin,githubLogin,signIn} = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
@@ -26,10 +28,28 @@ const Login = () => {
       })
       .catch((error) => console.error(error));
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+       navigate('/');
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+  };
   return (
     <div className="mt-2">
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 container mx-auto">
-        <form className="space-y-6" action="#">
+        <form onSubmit={handleSubmit} className="space-y-6" action="#">
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign in to our platform
           </h5>

@@ -1,11 +1,36 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
 
 const Register = () => {
+
+  const navigate = useNavigate();
+  const { createUser } = useContext(AuthContext);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        navigate('/');
+      
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
     return (
         <div className="mt-2">
       <div className="w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow-md sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700 container mx-auto">
-        <form className="space-y-6" action="#">
+        <form onSubmit={handleSubmit} className="space-y-6" action="#">
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
             Registration is going on
           </h5>
