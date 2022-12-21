@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Register = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   const { createUser } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
@@ -21,7 +23,7 @@ const Register = () => {
         console.log(user);
         form.reset();
         setError("");
-        navigate('/');
+        navigate(from, { to: "/" }, { replace: true });
       
       })
       .catch((e) => {
