@@ -10,7 +10,20 @@ const Header = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
+  
+  // const handleTheme = () => {
+  //   let targetDiv = document.body;
+  //   let navDiv = document.getElementsByTagName("nav")[0];
+  //   targetDiv.classList.toggle("darkTheme");
 
+  //   if (targetDiv.classList.contains("darkTheme")) {
+  //     navDiv.classList.remove("navbar-light", "bg-secondary");
+  //     navDiv.classList.add("navbar-dark", "bg-dark");
+  //   } else {
+  //     navDiv.classList.remove("navbar-dark", "bg-dark");
+  //     navDiv.classList.add("navbar-light", "bg-secondary");
+  //   }
+  // };
     return (
         <div>
            <Navbar
@@ -63,7 +76,6 @@ const Header = () => {
       }
     
     </>
-    
   </Navbar.Collapse>
 </Navbar>
         </div>
